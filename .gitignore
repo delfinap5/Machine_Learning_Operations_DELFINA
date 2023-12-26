@@ -1,4 +1,4 @@
 # Ignorar directorios
-Funciones API/
-Transformaciones/
-venv/
+Transformaciones
+delfina venv/
+Datasets/
