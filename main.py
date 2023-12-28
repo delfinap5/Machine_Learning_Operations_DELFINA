@@ -322,7 +322,7 @@ def GetSentimentAnalysis(CombinedSentimentAnalysis, desarrolladora):
 
 app = FastAPI()
 
-@app.get("/sentiment_analysis/{desarrolladora}")
+@app.get("/SentimentAnalysis/{desarrolladora}")
 def SentimentAnalysis(desarrolladora: str) -> Dict:
     """
     Endpoint para obtener el análisis de sentimiento por desarrolladora.
