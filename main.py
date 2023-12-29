@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from typing import List, Dict, Any
 import pandas as pd
 import datetime as dt
-
+import numpy as np
 
 # Cargar los datos de los archivos csv
 steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/steam_games.csv')
@@ -66,7 +66,7 @@ def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
 
 app0 = FastAPI()
 
-@app0.get('/PlayTimeGenre/{genre}')
+@app0.get('/play_time_genre/{genre}')
 def play_time_genre(genre: str):
     '''
     Obtiene el año con más horas jugadas para un género específico.
@@ -132,13 +132,10 @@ def get_user_for_genre(combined_user_for_genre, genero: str):
 
 app1 = FastAPI()
 
-@app1.get('/UserForGenre/{genre}')
+@app1.get('/user_for_genre/{genre}')
 def user_for_genre(genre: str):
-    try:
-        result = get_user_for_genre(combined_user_for_genre, genre)
-        return result
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    result = get_user_for_genre(combined_user_for_genre, genre)
+    return result
 
 
 
@@ -181,7 +178,7 @@ def get_users_recommend(combined_users_recommend, año):
 
 app2 = FastAPI()
 
-@app2.get('/UsersRecommend/{year}', response_model=List[Dict[str, str]])
+@app2.get('/users_recommend/{year}', response_model=List[Dict[str, str]])
 def users_recommend(year: int) -> list[dict[str, Any]]:
     '''
         Endpoint para obtener el top 3 de juegos recomendados para un año dado.
@@ -238,7 +235,7 @@ def get_users_worst_developer(combined_users_worst_developer, año):
 
 app3 = FastAPI()
 
-@app3.get('/UsersWorstDeveloper/{year}', response_model = List[Dict[str, str]])
+@app3.get('/users_worst_developer/{year}', response_model = List[Dict[str, str]])
 def users_worst_developer(year: int):
     '''
     Endpoint para obtener el top 3 de desarrolladoras menos recomendadas para un año dado.
@@ -250,11 +247,7 @@ def users_worst_developer(year: int):
     - List[Dict[str, str]]: Lista de diccionarios con los top 3 desarrolladoras menos recomendadas.
                             Cada diccionario tiene el formato {"Puesto X": "Nombre de la desarrolladora"}.
     '''
-    try:
-        result = get_users_worst_developer(combined_users_worst_developer, year)
-        return result
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    result = get_users_worst_developer(combined_users_worst_developer, year)
 
 
 
@@ -313,7 +306,7 @@ def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora):
 
 app4 = FastAPI()
 
-@app4.get('/SentimentAnalysis/{desarrolladora}')
+@app4.get('/sentiment_analysis/{desarrolladora}')
 def sentiment_analysis(desarrolladora: str) -> Dict:
     '''
     Endpoint para obtener el análisis de sentimiento por desarrolladora.
