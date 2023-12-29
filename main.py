@@ -5,7 +5,7 @@ import datetime as dt
 import numpy as np
 
 # Cargar los datos de los archivos csv
-steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/steam_games.csv')
+steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/datasets/steam_games.csv')
 df_steam_games = pd.DataFrame(steam_games)
 
 user_reviews = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/user_reviews.csv')
@@ -248,6 +248,7 @@ def users_worst_developer(year: int):
                             Cada diccionario tiene el formato {"Puesto X": "Nombre de la desarrolladora"}.
     '''
     result = get_users_worst_developer(combined_users_worst_developer, year)
+    return result
 
 
 
