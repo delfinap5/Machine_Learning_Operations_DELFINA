@@ -3,6 +3,7 @@ from typing import List, Dict
 from fastapi import HTTPException
 import pandas as pd
 import datetime as dt
+from typing import Any
 
 
 
@@ -86,7 +87,6 @@ def PlayTimeGenre(genre: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-
 ### API UserForGenre
     
 ## Df para UserForGenre
@@ -159,16 +159,16 @@ SteamGamesColumns = ['id', 'title']
 SGUsersRecommend = df_steam_games[SteamGamesColumns]
 
 # Combinar los DataFrames usando 'item_id' como clave de combinación
-CombinedUsersRecommend = URUsersRecommend.merge(SGUsersRecommend, left_on='item_id', right_on='id')
+combined_users_recommend = URUsersRecommend.merge(SGUsersRecommend, left_on='item_id', right_on='id')
 
 
 # Funcion para devolver los tres juegos más recomendados por usuarios en un año especifico
-def GetUsersRecommend(CombinedUsersRecommend, año):
+def get_users_recommend(combined_users_recommend, año):
     """
     Devuelve el top 3 de juegos MÁS recomendados por usuarios para el año dado.
 
     Args:
-    - CombinedUsersRecommend (DataFrame): DataFrame combinado de reseñas de usuarios y juegos de Steam.
+    - combined_users_recommend (DataFrame): DataFrame combinado de reseñas de usuarios y juegos de Steam.
     - año (int): Año para el cual se busca obtener los juegos más recomendados.
 
     Returns:
@@ -176,34 +176,31 @@ def GetUsersRecommend(CombinedUsersRecommend, año):
       Ejemplo de retorno: [{"Puesto 1": "Nombre Juego 1"}, {"Puesto 2": "Nombre Juego 2"}, {"Puesto 3": "Nombre Juego 3"}]
     """
     # Filtrar las reseñas para el año dado y con recomendaciones positivas
-    reviews_for_year = CombinedUsersRecommend[pd.to_datetime(CombinedUsersRecommend['posted']).dt.year == año]
+    reviews_for_year = combined_users_recommend[pd.to_datetime(combined_users_recommend['posted']).dt.year == año]
     positive_reviews = reviews_for_year[reviews_for_year['recommend']]
 
     # Contar la cantidad de recomendaciones por juego
     top_games = positive_reviews['title'].value_counts().head(3)
 
     # Crear la estructura de retorno en el formato deseado
-    return [{"Puesto {}".format(i + 1): game} for i, game in enumerate(top_games.index)]
+    return [{"puesto {}".format(i + 1): game} for i, game in enumerate(top_games.index)]
 
 app = FastAPI()
 
 @app.get("/UsersRecommend/{year}", response_model=List[Dict[str, str]])
-def UsersRecommend(year: int):
+def users_recommend(year: int) -> list[dict[str, Any]]:
     """
-    Endpoint para obtener el top 3 de juegos recomendados para un año dado.
+        Endpoint para obtener el top 3 de juegos recomendados para un año dado.
 
-    Parámetros:
-    - year (int): Año para el cual se busca el top de juegos recomendados.
+        Parámetros:
+        - year (int): Año para el cual se busca el top de juegos recomendados.
 
-    Retorna:
-    - List[Dict[str, str]]: Lista de diccionarios con los top 3 juegos recomendados.
-                            Cada diccionario tiene el formato {"Puesto X": "Nombre del juego"}.
+        Retorna:
+        - List[Dict[str, str]]: Lista de diccionarios con los top 3 juegos recomendados.
+                    Cada diccionario tiene el formato {"Puesto X": "Nombre del juego"}.
     """
-    try:
-        result = GetUsersRecommend(CombinedUsersRecommend, year)
-        return result
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    result = get_users_recommend(combined_users_recommend, year)
+    return result
 
 
 
