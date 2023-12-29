@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from typing import List, Dict, Any
 import pandas as pd
 import datetime as dt
-import numpy as np
+
 
 # Cargar los datos de los archivos csv
 steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/datasets/steam_games.csv')
@@ -29,7 +29,6 @@ UIPlayTimeGenre = df_users_items[UsersItemsColumns]
 # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
 combined_play_time_genre = SGPlayTimeGenre.merge(UIPlayTimeGenre, left_on='id', right_on='item_id')
 
-
 # Función para obtener el año con más horas jugadas para un género dado
 def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
     '''
@@ -45,8 +44,9 @@ def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
     # Filtrar los juegos por el género específico
     games_genre = combined_play_time_genre[combined_play_time_genre['genres'].str.contains(genero, case=False, na=False)]
     
+    # Retorna un message si no hay juegos del género especificado
     if games_genre.empty:
-        return None  # Retorna None si no hay juegos del género especificado
+        return [{'message': 'No hay datos disponibles para el género proporcionado'}]  
     
     # Encontrar el juego con más horas jugadas en el género
     most_played_game_id = games_genre.loc[games_genre['playtime_forever'].idxmax(), 'id']
@@ -56,13 +56,12 @@ def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
     most_played_game['release_date'] = pd.to_datetime(most_played_game['release_date'], errors='coerce')
     
     # Obtener el año con más horas jugadas
+    most_played_game.loc[:, 'release_date'] = pd.to_datetime(most_played_game['release_date'], errors='coerce')
     most_played_year = most_played_game['release_date'].dt.year
     most_played_year_counts = most_played_year.value_counts()
-    
-    if most_played_year_counts.empty:
-        return None  # Retorna None si no hay datos de año
-    
-    return most_played_year_counts.idxmax()
+    most_played_year_counts = int(most_played_year_counts.idxmax())
+
+    return most_played_year_counts
 
 app0 = FastAPI()
 
@@ -96,7 +95,6 @@ UiUserForGenre = df_users_items[UsersItemsColumns]
 # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
 combined_user_for_genre = SGUserForGenre.merge(UiUserForGenre, left_on='id', right_on='item_id')
 
-
 # Función para obtener el usuario con más horas jugadas para un género dado y una lista de la acumulación de horas jugadas por año para ese género
 def get_user_for_genre(combined_user_for_genre, genero: str):
     '''
@@ -113,6 +111,11 @@ def get_user_for_genre(combined_user_for_genre, genero: str):
     '''
     # Filtrar los juegos por el género específico en combined_user_for_genre
     games_genre = combined_user_for_genre[combined_user_for_genre['genres'].str.contains(genero, case=False, na=False)]
+
+    # Retorna un message si no hay juegos del género especificado
+    if games_genre.empty:
+        return [{'message': 'No hay datos disponibles para el género proporcionado'}]
+    
     genre_user_items = games_genre[['user_id', 'playtime_forever', 'release_date']]
     
     # Convertir la columna 'release_date' a formato de fecha
@@ -126,7 +129,7 @@ def get_user_for_genre(combined_user_for_genre, genero: str):
     most_played_user = genre_user_items.loc[genre_user_items['Horas'].idxmax(), 'user_id']
 
     return {
-        f'Usuario con más horas jugadas para {genero}': most_played_user,
+        'Usuario con más horas jugadas para {genero}': most_played_user,
         'Horas jugadas': hours_played_by_year.to_dict(orient='records')
     }
 
@@ -134,6 +137,16 @@ app1 = FastAPI()
 
 @app1.get('/user_for_genre/{genre}')
 def user_for_genre(genre: str):
+    '''
+    Endpoint para obtener los usuarios que más han interactuado con un género de juego específico.
+
+    Parámetros:
+    - genre (str): Género de juego para el cual se busca obtener los usuarios más activos.
+
+    Retorna:
+    - List[Dict[str, str]]: Lista de diccionarios con los usuarios más activos en el género proporcionado.
+                            Cada diccionario tiene el formato {'Usuario': 'Nombre del usuario', 'Interacciones': 'Número de interacciones'}.
+    '''
     result = get_user_for_genre(combined_user_for_genre, genre)
     return result
 
@@ -143,16 +156,15 @@ def user_for_genre(genre: str):
 
 ## Df para UsersRecommend
 # Columnas necesarias de df_user_reviews
-UserReviewsColumns = ['item_id', 'posted', 'recommend']
+UserReviewsColumns = ['item_id', 'posted', 'sentiment_analysis']
 URUsersRecommend = df_user_reviews[UserReviewsColumns]
 
 # Columnas necesarias de df_steam_games
-SteamGamesColumns = ['id', 'title']
+SteamGamesColumns = ['title', 'id']
 SGUsersRecommend = df_steam_games[SteamGamesColumns]
 
 # Combinar los DataFrames usando 'item_id' como clave de combinación
 combined_users_recommend = URUsersRecommend.merge(SGUsersRecommend, left_on='item_id', right_on='id')
-
 
 # Funcion para devolver los tres juegos más recomendados por usuarios en un año especifico
 def get_users_recommend(combined_users_recommend, año):
@@ -166,9 +178,14 @@ def get_users_recommend(combined_users_recommend, año):
     Returns:
     - list: Lista de diccionarios con el top 3 de juegos más recomendados en el formato deseado.
     '''
-    # Filtrar las reseñas para el año dado y con recomendaciones positivas
-    reviews_for_year = combined_users_recommend[pd.to_datetime(combined_users_recommend['posted']).dt.year == año]
-    positive_reviews = reviews_for_year[reviews_for_year['recommend']]
+    # Filtrar las reseñas para el año dado y con sentimiento positivo
+    combined_users_recommend['posted'] = pd.to_datetime(combined_users_recommend['posted'], format='%Y-%m-%d')
+    reviews_for_year = combined_users_recommend[combined_users_recommend['posted'].dt.year == año]
+
+    if reviews_for_year.empty:
+        return [{'message': 'No hay datos disponibles para el año proporcionado'}]
+    
+    positive_reviews = reviews_for_year[reviews_for_year['sentiment_analysis'] == 2]
 
     # Contar la cantidad de recomendaciones por juego
     top_games = positive_reviews['title'].value_counts().head(3)
@@ -179,7 +196,7 @@ def get_users_recommend(combined_users_recommend, año):
 app2 = FastAPI()
 
 @app2.get('/users_recommend/{year}', response_model=List[Dict[str, str]])
-def users_recommend(year: int) -> list[dict[str, Any]]:
+def users_recommend(year: int):
     '''
         Endpoint para obtener el top 3 de juegos recomendados para un año dado.
 
@@ -196,10 +213,10 @@ def users_recommend(year: int) -> list[dict[str, Any]]:
 
 
 ### API UsersWorstDeveloper
-    
+
 ## Df para UsersWorstDeveloper
 # Columnas necesarias de df_user_reviews para obtener recomendaciones de usuarios
-UserReviewsColumns = ['recommend', 'item_id', 'posted']
+UserReviewsColumns = ['sentiment_analysis', 'item_id', 'posted']
 URUsersWorstDeveloper = df_user_reviews[UserReviewsColumns]
 
 # Columnas necesarias de df_steam_games para obtener información del desarrollador
@@ -208,7 +225,6 @@ SGUsersWorstDeveloper = df_steam_games[SteamGamesColumns]
 
 # Combinar los DataFrames usando 'item_id' como clave de combinación
 combined_users_worst_developer= URUsersWorstDeveloper.merge(SGUsersWorstDeveloper, left_on='item_id', right_on='id')
-
 
 # Funcion para devolver los tres juegos menos recomendados por usuarios en un año especifico
 def get_users_worst_developer(combined_users_worst_developer, año):
@@ -222,12 +238,21 @@ def get_users_worst_developer(combined_users_worst_developer, año):
     Returns:
     - list: Lista de diccionarios con el top 3 de desarrolladoras menos recomendadas.
     '''
-    # Filtrar las reseñas para el año dado con recomendaciones negativas
-    negative_reviews = combined_users_worst_developer[(pd.to_datetime(combined_users_worst_developer['posted']).dt.year == año) & (combined_users_worst_developer['recommend'])]
-    # Obtener los IDs de los juegos con menos recomendaciones
+    # Convertir la columna 'posted' a datetime con el formato deseado
+    combined_users_worst_developer['posted'] = pd.to_datetime(combined_users_worst_developer['posted'], format='%Y-%m-%d')
+
+    # Filtrar las reseñas para el año dado con sentimiento negativo (0)
+    reviews_for_year = combined_users_worst_developer[combined_users_worst_developer['posted'].dt.year == año]
+
+    # Verificar si no hay datos para el año proporcionado
+    if reviews_for_year.empty:
+        return [{'message': 'No hay datos disponibles para el año proporcionado'}]
+
+    # Filtrar las reseñas con sentimiento negativo (0)
+    negative_reviews = reviews_for_year[reviews_for_year['sentiment_analysis'] == 0]
     worst_games_ids = negative_reviews['item_id']
 
-    # Obtener los IDs de la desarrolladora de los juegos menos recomendados
+    # Obtener las desarrolladoras de los juegos menos recomendados
     worst_developers = combined_users_worst_developer[combined_users_worst_developer['item_id'].isin(worst_games_ids)]['developer'].value_counts().tail(3)
 
     # Crear la estructura de retorno
@@ -235,7 +260,7 @@ def get_users_worst_developer(combined_users_worst_developer, año):
 
 app3 = FastAPI()
 
-@app3.get('/users_worst_developer/{year}', response_model = List[Dict[str, str]])
+@app3.get('/users_worst_developer/{year}')
 def users_worst_developer(year: int):
     '''
     Endpoint para obtener el top 3 de desarrolladoras menos recomendadas para un año dado.
@@ -256,7 +281,7 @@ def users_worst_developer(year: int):
 
 ## Df para SentimentAnalysis
 # Columnas necesarias de df_user_reviews 
-UserReviewsColumns = ['item_id','sentiment_analysis']
+UserReviewsColumns = ['item_id', 'review', 'sentiment_analysis']
 URSentimentAnalysis = df_user_reviews[UserReviewsColumns]
 
 # Columnas necesarias de df_steam_games
@@ -264,12 +289,15 @@ SteamGamesColumns = ['developer', 'id']
 SGSentimentAnalysis = df_steam_games[SteamGamesColumns]
 
 # Combinar los DataFrames usando 'item_id' como clave de combinación
-combined_sentiment_analysis= URSentimentAnalysis.merge(SGSentimentAnalysis, left_on='item_id', right_on='id')
+combined_sentiment_analysis = URSentimentAnalysis.merge( 
+    SGSentimentAnalysis, left_on='item_id', right_on='id', suffixes=('df_user_reviews', 'df_steam_games'))
 
+# Eliminar valores nulos, Nan o faltantes
+combined_sentiment_analysis = combined_sentiment_analysis.dropna(subset=['item_id','review' , 'sentiment_analysis', 'developer', 'id'])
 
 #  Esta funcion devuelve un diccionario con el nombre de la desarrolladora selecionada
 # y una lista con la cantidad total de registros de reseñas de usuarios categorizados por 0 (Negative), 1 (Neutral) y 2 (Positive).
-def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora):
+def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora: str) -> Dict:
     '''
     Según la empresa desarrolladora, devuelve un diccionario con el nombre de la desarrolladora
     como llave y una lista con la cantidad total de registros de reseñas de usuarios que se 
@@ -285,12 +313,17 @@ def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora):
     '''
     # Filtrar las reseñas por la empresa desarrolladora
     developer_games = combined_sentiment_analysis[combined_sentiment_analysis['developer'] == desarrolladora]
-    reviews_by_developer = developer_games[developer_games['sentiment_analysis'].notnull()]  # Filtrar por reseñas con análisis de sentimiento válido
+
+    # Filtrar por reseñas con análisis de sentimiento válido
+    reviews_by_developer = developer_games.dropna(subset=['sentiment_analysis'])
+
+    # Filtrar por reseñas con análisis de sentimiento válido
+    reviews_by_developer['sentiment_analysis'] = reviews_by_developer['sentiment_analysis'].astype(int)
 
     # Verificar si hay datos para la desarrolladora seleccionada
     if len(reviews_by_developer) == 0:
-        return {desarrolladora: {'No hay datos de la desarrolladora seleccionada': 0}}  # Asumiendo que el valor debe ser 0
-
+        return {'message': 'No hay datos disponibles para la desarrolladora proporcionada'}
+    
     # Contar la cantidad de reseñas por sentimiento
     sentiment_counts = reviews_by_developer['sentiment_analysis'].value_counts()
 
@@ -298,9 +331,9 @@ def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora):
     sentiment_dict = {
         desarrolladora: 
             {
-            'Negative': sentiment_counts.get(0, 0),
-            'Neutral': sentiment_counts.get(1, 0),
-            'Positive': sentiment_counts.get(2, 0)
+            'Negative': int(sentiment_counts.get(0, 0)),
+            'Neutral': int(sentiment_counts.get(1, 0)),
+            'Positive': int(sentiment_counts.get(2, 0))
             }
     }
     return sentiment_dict
