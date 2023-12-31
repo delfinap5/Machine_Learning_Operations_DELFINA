@@ -5,7 +5,7 @@ import datetime as dt
 
 
 # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
-steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/datasets/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
+steam_games = pd.read_csv('/datasets/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
 df_steam_games = pd.DataFrame(steam_games)
 
 user_reviews = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
