@@ -5,29 +5,21 @@ import datetime as dt
 
 
 # Cargar los datos de los archivos csv
-steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/datasets/steam_games.csv')
+steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/datasets/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
 df_steam_games = pd.DataFrame(steam_games)
 
-user_reviews = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/user_reviews.csv')
+user_reviews = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
 df_user_reviews = pd.DataFrame(user_reviews)
 
-users_items = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/users_items.csv')
+users_items = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/Datasets/users_items.csv', usecols=['item_id', 'playtime_forever', 'user_id', 'release_date'])
 df_users_items = pd.DataFrame(users_items)
 
 
 ### API PlayTimeGenre
 
 ## Df para PlayTimeGenre
-# Columnas necesarias de df_steam_games
-SteamGamesColumns = ['id', 'release_date', 'genres']
-SGPlayTimeGenre = df_steam_games[SteamGamesColumns]
-
-# Columnas necesarias de df_users_items
-UsersItemsColumns = ['item_id', 'playtime_forever']
-UIPlayTimeGenre = df_users_items[UsersItemsColumns]
-
 # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
-combined_play_time_genre = SGPlayTimeGenre.merge(UIPlayTimeGenre, left_on='id', right_on='item_id')
+combined_play_time_genre = steam_games.merge(users_items, left_on='id', right_on='item_id')
 
 # Función para obtener el año con más horas jugadas para un género dado
 def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
@@ -84,16 +76,8 @@ def play_time_genre(genre: str):
 ### API UserForGenre
     
 ## Df para UserForGenre
-# Columnas necesarias de df_steam_games
-SteamGamesColumns = ['id', 'release_date', 'genres']
-SGUserForGenre = df_steam_games[SteamGamesColumns]
-
-# Columnas necesarias de df_users_items
-UsersItemsColumns = ['user_id', 'item_id', 'playtime_forever']
-UiUserForGenre = df_users_items[UsersItemsColumns]
-
 # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
-combined_user_for_genre = SGUserForGenre.merge(UiUserForGenre, left_on='id', right_on='item_id')
+combined_user_for_genre = df_steam_games.merge(df_users_items, left_on='id', right_on='item_id')
 
 # Función para obtener el usuario con más horas jugadas para un género dado y una lista de la acumulación de horas jugadas por año para ese género
 def get_user_for_genre(combined_user_for_genre, genero: str):
@@ -155,16 +139,8 @@ def user_for_genre(genre: str):
 ### API UsersRecommend
 
 ## Df para UsersRecommend
-# Columnas necesarias de df_user_reviews
-UserReviewsColumns = ['item_id', 'posted', 'sentiment_analysis']
-URUsersRecommend = df_user_reviews[UserReviewsColumns]
-
-# Columnas necesarias de df_steam_games
-SteamGamesColumns = ['title', 'id']
-SGUsersRecommend = df_steam_games[SteamGamesColumns]
-
 # Combinar los DataFrames usando 'item_id' como clave de combinación
-combined_users_recommend = URUsersRecommend.merge(SGUsersRecommend, left_on='item_id', right_on='id')
+combined_users_recommend = df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
 
 # Funcion para devolver los tres juegos más recomendados por usuarios en un año especifico
 def get_users_recommend(combined_users_recommend, año):
@@ -215,16 +191,8 @@ def users_recommend(year: int):
 ### API UsersWorstDeveloper
 
 ## Df para UsersWorstDeveloper
-# Columnas necesarias de df_user_reviews para obtener recomendaciones de usuarios
-UserReviewsColumns = ['sentiment_analysis', 'item_id', 'posted']
-URUsersWorstDeveloper = df_user_reviews[UserReviewsColumns]
-
-# Columnas necesarias de df_steam_games para obtener información del desarrollador
-SteamGamesColumns = ['id', 'developer']
-SGUsersWorstDeveloper = df_steam_games[SteamGamesColumns]
-
 # Combinar los DataFrames usando 'item_id' como clave de combinación
-combined_users_worst_developer= URUsersWorstDeveloper.merge(SGUsersWorstDeveloper, left_on='item_id', right_on='id')
+combined_users_worst_developer= df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
 
 # Funcion para devolver los tres juegos menos recomendados por usuarios en un año especifico
 def get_users_worst_developer(combined_users_worst_developer, año):
@@ -280,22 +248,13 @@ def users_worst_developer(year: int):
 ## Api sentiment_analysis
 
 ## Df para SentimentAnalysis
-# Columnas necesarias de df_user_reviews 
-UserReviewsColumns = ['item_id', 'review', 'sentiment_analysis']
-URSentimentAnalysis = df_user_reviews[UserReviewsColumns]
-
-# Columnas necesarias de df_steam_games
-SteamGamesColumns = ['developer', 'id']
-SGSentimentAnalysis = df_steam_games[SteamGamesColumns]
-
 # Combinar los DataFrames usando 'item_id' como clave de combinación
-combined_sentiment_analysis = URSentimentAnalysis.merge( 
-    SGSentimentAnalysis, left_on='item_id', right_on='id', suffixes=('df_user_reviews', 'df_steam_games'))
+combined_sentiment_analysis = df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
 
 # Eliminar valores nulos, Nan o faltantes
 combined_sentiment_analysis = combined_sentiment_analysis.dropna(subset=['item_id','review' , 'sentiment_analysis', 'developer', 'id'])
 
-#  Esta funcion devuelve un diccionario con el nombre de la desarrolladora selecionada
+#  Funcion que devuelve un diccionario con el nombre de la desarrolladora selecionada
 # y una lista con la cantidad total de registros de reseñas de usuarios categorizados por 0 (Negative), 1 (Neutral) y 2 (Positive).
 def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora: str) -> Dict:
     '''
