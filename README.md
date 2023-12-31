@@ -30,3 +30,6 @@ Se realizó un desploy de la api. aqui el link
 ## * Modelo de Aprendizaje Automático
 Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
 
+## Proyecto Individual N°1
+## Machine Learning Operations (MLOps)
+### Delfina Longo Peña - DPT05
