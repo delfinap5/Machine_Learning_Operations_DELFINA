@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # **PI MLOpi_STEAM_DELFINA**
 
 ## **Proyecto Individual N°1 (MLOps)**  
@@ -29,3 +30,6 @@ Se realizó un desploy de la api. aqui el link
 
 ## * Modelo de Aprendizaje Automático
 Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
+=======
+
+>>>>>>> 509a6dcacfe1afa92077a921ac96de3c6b5560df
