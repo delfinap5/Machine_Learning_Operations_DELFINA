@@ -2,7 +2,7 @@
 # **PI MLOpi_STEAM_DELFINA**
 
 ## **Proyecto Individual N°1 (MLOps)**  
-### Delfina Longo Peña - DPT05
+## Delfina Longo Peña - DPT05
 
 ### Introducción
 Este es un proyecto enfocado en la creación de una API para la gestión y análisis de datos de juegos proporcionados por Steam. El objetivo es generar funcionalidades específicas para realizar consultas, análisis y recomendaciones a partir de los datasets brindados.
@@ -30,3 +30,4 @@ Se realizó un desploy de la api. aqui el link
 
 ### Modelo de Aprendizaje Automático
 Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
+def recomendacion_juego( id de producto ): Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.

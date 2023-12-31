@@ -4,7 +4,7 @@ import pandas as pd
 import datetime as dt
 
 
-# Cargar los datos de los archivos csv
+# Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
 steam_games = pd.read_csv('C:/Users/delfi/Downloads/delfina local/PI MLOps - STEAM - DELFINA/datasets/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
 df_steam_games = pd.DataFrame(steam_games)
 
