@@ -19,7 +19,7 @@ df_users_items = pd.DataFrame(users_items)
 
 ## Df para PlayTimeGenre
 # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
-combined_play_time_genre = steam_games.merge(users_items, left_on='id', right_on='item_id')
+combined_play_time_genre = df_steam_games.merge(df_users_items, left_on='id', right_on='item_id')
 
 # Función para obtener el año con más horas jugadas para un género dado
 def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
