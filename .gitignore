@@ -1,4 +1,3 @@
 # Ignorar directorios
-data sin etl/
-datasets/
+
 delfina_venv/
