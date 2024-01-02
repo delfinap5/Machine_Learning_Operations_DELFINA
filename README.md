@@ -25,7 +25,7 @@ Se disponibilizó los datos utilizando FastAPI. Los endpoints propuestos para co
 - sentiment_analysis(empresa_desarrolladora: str): Según la empresa desarrolladora, devuelve un diccionario con la cantidad total de registros de reseñas categorizados por análisis de sentimiento.
 
 ### Deployment
-Se realizó un desploy de la api. aqui el link
+Se realizó un desploy de la api. aqui el link https://apisteamdelfina.onrender.com
 
 ### Modelo de Aprendizaje Automático
 Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
