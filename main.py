@@ -5,6 +5,7 @@ import datetime as dt
 
 
 # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
+<<<<<<< HEAD
 steam_games = pd.read_csv('../datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
 df_steam_games = pd.DataFrame(steam_games)
 
@@ -12,6 +13,15 @@ user_reviews = pd.read_csv('../datasets/csv/user_reviews.csv', usecols=['item_id
 df_user_reviews = pd.DataFrame(user_reviews)
 
 users_items = pd.read_csv('../datasets/csv/users_items.csv', usecols=['item_id', 'playtime_forever', 'user_id', 'release_date'])
+=======
+steam_games = pd.read_csv('datasets/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
+df_steam_games = pd.DataFrame(steam_games)
+
+user_reviews = pd.read_csv('datasets/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
+df_user_reviews = pd.DataFrame(user_reviews)
+
+users_items = pd.read_csv('datasets/users_items.csv', usecols=['item_id', 'playtime_forever', 'user_id', 'release_date'])
+>>>>>>> 29ed07ca9cda8f2d915d5d0b36462dc552059d81
 df_users_items = pd.DataFrame(users_items)
 
 
