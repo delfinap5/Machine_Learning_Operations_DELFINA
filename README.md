@@ -6,6 +6,10 @@
 ### Introducción
 Este es un proyecto enfocado en la creación de una API para la gestión y análisis de datos de juegos proporcionados por Steam. El objetivo es generar funcionalidades específicas para realizar consultas, análisis y recomendaciones a partir de los datasets brindados.
 
+## Diccionario de los Datos
+
+<p align="center"><img src="./images/Diccionario.jpg"></p>
+
 ### Transformaciones de Datos
 Se realizó la lectura de los dataset con el formato correcto, incluyendo su limpieza, organización y preparación para optimizar las  consultas que se realicen, el rendimiento de la API, el entrenamiento del modelo de aprendizaje automático.
 
