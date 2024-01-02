@@ -34,3 +34,7 @@ Se realizó un desploy de la api. Aqui el link: [api steam delfina](https://apis
 ### Modelo de Aprendizaje Automático
 Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
 def recomendacion_juego( id de producto ): Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
+
+# Video
+Este video es explicativo y desarrolla todo el contenido del proyecto
+[Link del desarrollo del proyecto](https://drive.google.com/drive/folders/1P68YjR5G0JpGXKHdHUULH8FPbCD85dsF?usp=sharing)
