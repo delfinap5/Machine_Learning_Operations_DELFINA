@@ -4,7 +4,20 @@ from typing import List, Dict, Any
 from fastapi import FastAPI
 
 
-### play_time_genre
+# Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
+steam_games = pd.read_csv('./datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
+users_items = pd.read_csv('./datasets/csv/users_items.csv', usecols=['item_id', 'playtime_forever', 'user_id'])
+user_reviews = pd.read_csv('./datasets/csv/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
+
+# Df para play_time_genre
+df_steam_games = pd.DataFrame(steam_games)
+df_users_items = pd.DataFrame(users_items)
+df_user_reviews = pd.DataFrame(user_reviews)
+
+### play_time_genre)
+
+# Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
+combined_play_time_genre = df_steam_games.merge(df_users_items, left_on='id', right_on='item_id')
 
 # Función para obtener el año con más horas jugadas para un género dado
 def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
@@ -18,15 +31,7 @@ def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
     Returns:
     - int: El año con más horas jugadas para el género especificado.
     '''
-    # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
-    steam_games = pd.read_csv('../datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
-    users_items = pd.read_csv('../datasets/csv/users_items.csv', usecols=['item_id', 'playtime_forever', 'user_id', 'release_date'])
-    # Df para play_time_genre
-    df_steam_games = pd.DataFrame(steam_games)
-    df_users_items = pd.DataFrame(users_items)
-    # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
-    combined_play_time_genre = df_steam_games.merge(df_users_items, left_on='id', right_on='item_id')
-
+    
     # Filtrar los juegos por el género específico
     games_genre = combined_play_time_genre[combined_play_time_genre['genres'].str.contains(genero, case=False, na=False)]
     
@@ -52,6 +57,9 @@ def get_play_time_genre(combined_play_time_genre, genero: str) -> int:
 
 ### user_for_genre
 
+# Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
+combined_user_for_genre = df_steam_games.merge(df_users_items, left_on='id', right_on='item_id')
+
 # Función para obtener el usuario con más horas jugadas para un género dado y una lista de la acumulación de horas jugadas por año para ese género
 def get_user_for_genre(combined_user_for_genre, genero: str):
     '''
@@ -66,17 +74,11 @@ def get_user_for_genre(combined_user_for_genre, genero: str):
     - dict: Un diccionario con el usuario que más horas jugadas tiene para el género dado
             y una lista de la acumulación de horas jugadas por año.
     '''
-    # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
-    users_items = pd.read_csv('../datasets/csv/users_items.csv', usecols=['item_id', 'playtime_forever', 'user_id', 'release_date'])
-    steam_games = pd.read_csv('../datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
-    ## Df para user_for_genre
-    df_users_items = pd.DataFrame(users_items)
-    df_steam_games = pd.DataFrame(steam_games)
-    # Combinar los DataFrames en uno solo usando 'id' y 'item_id' como claves de combinación
-    combined_user_for_genre = df_steam_games.merge(df_users_items, left_on='id', right_on='item_id')
-
     # Filtrar los juegos por el género específico en combined_user_for_genre
     games_genre = combined_user_for_genre[combined_user_for_genre['genres'].str.contains(genero, case=False, na=False)]
+
+    # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
+    
 
     # Retorna un message si no hay juegos del género especificado
     if games_genre.empty:
@@ -102,6 +104,9 @@ def get_user_for_genre(combined_user_for_genre, genero: str):
 
 ### users_recommend
 
+# Combinar los DataFrames usando 'item_id' como clave de combinación
+combined_users_recommend = df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
+
 # Funcion para devolver los tres juegos más recomendados por usuarios en un año especifico
 def get_users_recommend(combined_users_recommend, año):
     '''
@@ -114,14 +119,6 @@ def get_users_recommend(combined_users_recommend, año):
     Returns:
     - list: Lista de diccionarios con el top 3 de juegos más recomendados en el formato deseado.
     '''
-    # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
-    steam_games = pd.read_csv('../datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
-    user_reviews = pd.read_csv('../datasets/csv/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
-    ## Df para users_recommend
-    df_steam_games = pd.DataFrame(steam_games)
-    df_user_reviews = pd.DataFrame(user_reviews)
-    # Combinar los DataFrames usando 'item_id' como clave de combinación
-    combined_users_recommend = df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
     # Filtrar las reseñas para el año dado y con sentimiento positivo
     combined_users_recommend['posted'] = pd.to_datetime(combined_users_recommend['posted'], format='%Y-%m-%d')
     reviews_for_year = combined_users_recommend[combined_users_recommend['posted'].dt.year == año]
@@ -140,6 +137,11 @@ def get_users_recommend(combined_users_recommend, año):
 
 ### users_worst_developer
 
+# Combinar los DataFrames usando 'item_id' como clave de combinación
+combined_users_worst_developer= df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
+# Convertir la columna 'posted' a datetime con el formato deseado
+combined_users_worst_developer['posted'] = pd.to_datetime(combined_users_worst_developer['posted'], format='%Y-%m-%d')
+
 # Funcion para devolver los tres juegos menos recomendados por usuarios en un año especifico
 def get_users_worst_developer(combined_users_worst_developer, año):
     '''
@@ -152,17 +154,6 @@ def get_users_worst_developer(combined_users_worst_developer, año):
     Returns:
     - list: Lista de diccionarios con el top 3 de desarrolladoras menos recomendadas.
     '''
-    # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
-    steam_games = pd.read_csv('../datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
-    user_reviews = pd.read_csv('../datasets/csv/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
-    ## Df para users_worst_developer
-    df_steam_games = pd.DataFrame(steam_games)
-    df_user_reviews = pd.DataFrame(user_reviews)
-    # Combinar los DataFrames usando 'item_id' como clave de combinación
-    combined_users_worst_developer= df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
-    # Convertir la columna 'posted' a datetime con el formato deseado
-    combined_users_worst_developer['posted'] = pd.to_datetime(combined_users_worst_developer['posted'], format='%Y-%m-%d')
-
     # Filtrar las reseñas para el año dado con sentimiento negativo (0)
     reviews_for_year = combined_users_worst_developer[combined_users_worst_developer['posted'].dt.year == año]
 
@@ -183,6 +174,9 @@ def get_users_worst_developer(combined_users_worst_developer, año):
 
 ## sentiment_analysis
 
+# Combinar los DataFrames usando 'item_id' como clave de combinación
+combined_sentiment_analysis = df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
+
 #  Funcion que devuelve un diccionario con el nombre de la desarrolladora selecionada
 # y una lista con la cantidad total de registros de reseñas de usuarios categorizados por 0 (Negative), 1 (Neutral) y 2 (Positive).
 def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora: str) -> Dict:
@@ -199,15 +193,6 @@ def get_sentiment_analysis(combined_sentiment_analysis, desarrolladora: str) -> 
     - dict: Diccionario con el nombre de la desarrolladora como llave y la cantidad de registros
             categorizados por sentimiento como valor.
     '''
-    # Cargar los datos de los archivos csv eligiendo unicamente las columnas que usaré
-    steam_games = pd.read_csv('../datasets/csv/steam_games.csv', usecols=['id', 'release_date', 'genres', 'title', 'developer'])
-    user_reviews = pd.read_csv('../datasets/csv/user_reviews.csv', usecols=['item_id', 'review', 'sentiment_analysis', 'posted'])
-    ## Df para sentiment_analysis
-    df_steam_games = pd.DataFrame(steam_games)
-    df_user_reviews = pd.DataFrame(user_reviews)
-    # Combinar los DataFrames usando 'item_id' como clave de combinación
-    combined_sentiment_analysis = df_user_reviews.merge(df_steam_games, left_on='item_id', right_on='id')
-
     # Eliminar valores nulos, Nan o faltantes
     combined_sentiment_analysis = combined_sentiment_analysis.dropna(subset=['item_id','review' , 'sentiment_analysis', 'developer', 'id'])
     
