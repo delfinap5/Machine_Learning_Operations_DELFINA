@@ -1,3 +1,6 @@
 # Ignorar directorios
 
 delfina_venv/
+datasets/steam_games.json
+datasets/user_reviews.json
+datasets/users_items.json
