@@ -86,87 +86,87 @@ Utilicé las siguientes Tecnologías:
 
 ### **Editor de código:**
 
-- [![Visual Studio Code](https://img.shields.io/badge/VisualStudioCode-7B68E?style=for-the-badge&logo=lock&logoColor=white)](https://code.visualstudio.com/):
+- [![Visual Studio Code](https://img.shields.io/badge/VisualStudioCode-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://code.visualstudio.com/)
   
   Para escribir, depurar y administrar tu código.
 
 ### **Lenguaje de Programación:**
 
-- [![Python](https://img.shields.io/badge/Python-007ACC?style=for-the-badge&logo=lock&logoColor=white)](https://www.python.org/):
+- [![Python](https://img.shields.io/badge/Python-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://www.python.org/)
   
   Para el desarrollo de la lógica y la funcionalidad de tu aplicación.
 
 ### **Bibliotecas de Análisis de Datos:**
 
-- [![NumPy](https://img.shields.io/badge/NumPy-FFA500?style=for-the-badge&logo=lock&logoColor=white)](https://numpy.org/):
+- [![NumPy](https://img.shields.io/badge/NumPy-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://numpy.org/)
 
   Para operaciones numéricas eficientes.
 
-- [![Pandas](https://img.shields.io/badge/Pandas-FFA500?style=for-the-badge&logo=lock&logoColor=white)](https://pandas.pydata.org/):
+- [![Pandas](https://img.shields.io/badge/Pandas-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://pandas.pydata.org/)
   
   Para manipulación y análisis de datos estructurados.
 
 ### **Framework Web:**
 
-- [![FastApi](https://img.shields.io/badge/FastApi-FFA500?style=for-the-badge&logo=lock&logoColor=white)](https://fastapi.tiangolo.com/):
+- [![FastApi](https://img.shields.io/badge/FastApi-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://fastapi.tiangolo.com/)
   
   Para crear APIs rápidas y modernas.
 
 ### **Aplicaciones de Productividad:**
 
-- [![Excel](https://img.shields.io/badge/Excel-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://www.microsoft.com/es-es/microsoft-365/excel):
+- [![Excel](https://img.shields.io/badge/Excel-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://www.microsoft.com/es-es/microsoft-365/excel)
   
   Para procesamiento de datos y análisis.
 
-- [![Zoom](https://img.shields.io/badge/Zoom-333333?style=for-the-badge&logo=lock&logoColor=white)](https://zoom.us/es):
+- [![Zoom](https://img.shields.io/badge/Zoom-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://zoom.us/es)
   
   Para comunicación en línea y videoconferencias.
 
 ### **Renderización y Compresión de Datos:**
 
-- [![Render](https://img.shields.io/badge/Render-333333?style=for-the-badge&logo=lock&logoColor=white)](https://render.com/):
+- [![Render](https://img.shields.io/badge/Render-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://render.com/)
   
   Para renderización de datos (no estoy seguro si te refieres a alguna biblioteca específica).
 
-- [![Gzip](https://img.shields.io/badge/Gzip-333333?style=for-the-badge&logo=lock&logoColor=white)](https://docs.python.org/es/3/library/gzip.html):
+- [![Gzip](https://img.shields.io/badge/Gzip-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://docs.python.org/es/3/library/gzip.html)
   
   Para compresión de archivos y datos.
 
 ### **Manipulación de Datos y Texto:**
 
-- [![JSON](https://img.shields.io/badge/JSON-333333?style=for-the-badge&logo=lock&logoColor=white)](https://docs.python.org/es/3/library/json.html):
+- [![JSON](https://img.shields.io/badge/JSON-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://docs.python.org/es/3/library/json.html)
   
   Para manejar datos en formato JSON.
   
-- [![ast](https://img.shields.io/badge/ast-333333?style=for-the-badge&logo=lock&logoColor=white)](https://docs.python.org/es/3.8/library/ast.html):
+- [![ast](https://img.shields.io/badge/ast-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://docs.python.org/es/3.8/library/ast.html)
   
   Para análisis de árboles sintácticos abstractos.
   
-- [![shutil](https://img.shields.io/badge/shutil-333333?style=for-the-badge&logo=lock&logoColor=white)](https://docs.python.org/es/3/library/shutil.html):
+- [![shutil](https://img.shields.io/badge/shutil-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://docs.python.org/es/3/library/shutil.html)
   
   Para operaciones de archivos y directorios.
   
-- [![re](https://img.shields.io/badge/re-333333?style=for-the-badge&logo=lock&logoColor=white)](https://docs.python.org/es/3/library/re.html):
+- [![re](https://img.shields.io/badge/re-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://docs.python.org/es/3/library/re.html)
   
   Para expresiones regulares.
   
-- [![NLTK](https://img.shields.io/badge/nltk-333333?style=for-the-badge&logo=lock&logoColor=white)](https://www.nltk.org/):
+- [![NLTK](https://img.shields.io/badge/nltk-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://www.nltk.org/)
   
   Para procesamiento de lenguaje natural, específicamente para análisis de sentimientos con SentimentIntensityAnalyzer.
   
-- [![sklearn.feature_extraction.text](https://img.shields.io/badge/sklearn.feature_extraction.text-333333?style=for-the-badge&logo=lock&logoColor=white)](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html):
+- [![sklearn.feature_extraction.text](https://img.shields.io/badge/sklearn.feature_extraction.text-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html)
   
   Para extracción de características de texto con TfidfVectorizer.
 
 ### **Operaciones de Fecha y Hora:**
 
-- [![Datetime](https://img.shields.io/badge/Datetime-333333?style=for-the-badge&logo=lock&logoColor=white)](https://docs.python.org/es/3/library/datetime.html):
+- [![Datetime](https://img.shields.io/badge/Datetime-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://docs.python.org/es/3/library/datetime.html)
 
   Para manipulación de objetos de fecha y hora.
 
 ### **Servidor Web y Despliegue:**
 
-- [![Uvicorn](https://img.shields.io/badge/Uvicorn-333333?style=for-the-badge&logo=lock&logoColor=white)](https://www.uvicorn.org/):
+- [![Uvicorn](https://img.shields.io/badge/Uvicorn-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://www.uvicorn.org/)
 
   Para ejecutar el servidor web ASGI que sirve tu aplicación FastAPI.
 
@@ -175,7 +175,7 @@ Utilicé las siguientes Tecnologías:
 
 ---
 
-Este video es explicativo y desarrolla todo el contenido del proyecto
+Este video es explicativo y desarrolla el contenido del proyecto
 [Link del desarrollo del proyecto](https://drive.google.com/drive/folders/1P68YjR5G0JpGXKHdHUULH8FPbCD85dsF?usp=sharing)
 
 ## **Contacto**
