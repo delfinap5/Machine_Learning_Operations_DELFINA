@@ -79,46 +79,84 @@ Según la empresa desarrolladora, devuelve un diccionario con la cantidad total 
 Se realizó un desploy de la api. Aqui el link: [api steam delfina](https://apisteamdelfina.onrender.com/docs)
 
 
-## Stack Tecnológico
+## **Stack Tecnológico**
 
 ---
-
 Utilicé las siguientes Tecnologías:
 
-#### **Visual Studio Code**
+### **Editor de código:**
+
+- *Visual Studio Code:*
 [![Visual Studio Code](https://img.shields.io/badge/Visual-Studio-Code-7B68E?style=for-the-badge&logo=lock&logoColor=white)](https://code.visualstudio.com/)
+  Para escribir, depurar y administrar tu código.
 
-- *Descripción:* Visual Studio Code es un editor de código fuente desarrollado por Microsoft que ofrece una variedad de características útiles para la programación, incluyendo resaltado de sintaxis, finalización de código, depuración integrada y control de versiones.
+### **Lenguaje de Programación:**
 
-- *Utilidad:* Fue utilizado para escribir, editar y depurar código en lenguajes de Python. Con él conecté el repositorio a GitHub.
-
-#### **FastApi**
-[![FastApi](https://img.shields.io/badge/FastApi-FFA500?style=for-the-badge&logo=lock&logoColor=white)](https://fastapi.tiangolo.com/)
-
-- *Descripción:* FastAPI es un marco web moderno y de alto rendimiento para construir APIs con Python. Está diseñado para ser fácil de usar, rápido de aprender y muy rápido de ejecutar. Se basa en Python 3.7+ y proporciona una sintaxis declarativa para definir endpoints, validación de datos, documentación automática y soporte para tipos de datos Python nativos.
-- 
-- *Utilidad:* Con FastAPI construí APIs rápidas y eficientes con Python. Además, su integración con bibliotecas como Pydantic y Starlette proporciona características poderosas como la validación automática de datos y el manejo de solicitudes asíncronas, lo que lo convierte en una excelente opción para proyectos de API web modernos.
-
-#### **Python**
+- *Python:*
 [![Python](https://img.shields.io/badge/Python-007ACC?style=for-the-badge&logo=lock&logoColor=white)](https://www.python.org/)
+  Para el desarrollo de la lógica y la funcionalidad de tu aplicación.
 
-- *Descripción:* Python es un lenguaje de programación de alto nivel, interpretado y generalmente utilizado para el desarrollo de aplicaciones web, análisis de datos, inteligencia artificial, scripting y muchas otras áreas. Es conocido por su sintaxis clara y legible, así como por su amplia gama de bibliotecas y marcos de trabajo que facilitan el desarrollo rápido y eficiente de software.
+### **Bibliotecas de Análisis de Datos:**
 
-- *Utilidad:* Python lo utilicé ya que su ecosistema de bibliotecas y herramientas en constante crecimiento lo hace ideal para realizar trabajo de Data Enggenier y Machine Learning.
+- *NumPy:*
+  Para operaciones numéricas eficientes.
 
-#### **Excel**
+- *Pandas:*
+  Para manipulación y análisis de datos estructurados.
+
+### **Framework Web:**
+
+- *FastAPI:*
+[![FastApi](https://img.shields.io/badge/FastApi-FFA500?style=for-the-badge&logo=lock&logoColor=white)](https://fastapi.tiangolo.com/)
+  Para crear APIs rápidas y modernas.
+
+### **Aplicaciones de Productividad:**
+
+- *Microsoft Excel:*
 [![Excel](https://img.shields.io/badge/Excel-FF5733?style=for-the-badge&logo=lucidchart&logoColor=white)](https://www.microsoft.com/es-es/microsoft-365/excel)
+  Para procesamiento de datos y análisis.
 
-- *Descripción:* Microsoft Excel es una aplicación de hojas de cálculo desarrollada por Microsoft que permite a los usuarios realizar cálculos, organizar datos y crear gráficos. Es ampliamente utilizado en entornos empresariales, académicos y personales para realizar análisis, seguimiento de datos y presentaciones.
+- *Zoom:*
+[![Zoom](https://img.shields.io/badge/Zoom-333333?style=for-the-badge&logo=lock&logoColor=white)](https://zoom.us/es)
+  Para comunicación en línea y videoconferencias.
 
-- *Utilidad:* Sus funciones avanzadas, como tablas dinámicas, me permitieron crear el diccionario de datos. También se pueden visualizar los datasets.
+### **Renderización y Compresión de Datos:**
 
-#### **Zoom**
-[![Loocker](https://img.shields.io/badge/Zoom-333333?style=for-the-badge&logo=lock&logoColor=white)](https://zoom.us/es)
+- *Render:*
+  Para renderización de datos (no estoy seguro si te refieres a alguna biblioteca específica).
 
-- *Descripción:* Zoom es una plataforma de comunicación en línea que ofrece servicios de videoconferencia, reuniones en línea, mensajería y colaboración en grupo. Es ampliamente utilizado para reuniones virtuales, webinars, clases en línea y comunicación remota.
+- *Gzip:*
+  Para compresión de archivos y datos.
 
-- *Utilidad:* Lo utilicé para realizar la presentacion del proyecto, me permitio compartir pantalla, grabar la reunión y así realizar el video.
+### **Manipulación de Datos y Texto:**
+
+- *JSON:*
+  Para manejar datos en formato JSON.
+  
+- *ast:*
+  Para análisis de árboles sintácticos abstractos.
+  
+- *shutil:*
+  Para operaciones de archivos y directorios.
+  
+- *re:*
+  Para expresiones regulares.
+  
+- *nltk:*
+  Para procesamiento de lenguaje natural, específicamente para análisis de sentimientos con SentimentIntensityAnalyzer.
+  
+- *sklearn.feature_extraction.text:*
+  Para extracción de características de texto con TfidfVectorizer.
+
+### **Operaciones de Fecha y Hora:**
+
+- *datetime:*
+Para manipulación de objetos de fecha y hora.
+
+### **Servidor Web y Despliegue:**
+
+- *uvicorn:*
+Para ejecutar el servidor web ASGI que sirve tu aplicación FastAPI.
 
 
 ## **Video**
