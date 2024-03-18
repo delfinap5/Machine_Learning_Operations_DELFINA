@@ -3,17 +3,36 @@
 ## **Proyecto Individual N°1 (MLOps)**  
 ## Delfina Longo Peña - DPT05
 
+<details>
+<summary><strong>Índice</strong></summary>
+
+1. [INtroducción](###Introducción)
+2. [FDiccionario](##Diccionario-de-Datos)
+3. [Transformaciones (ETL)](###Transformaciones-de-Datos-(ETL))
+4. [Analisis (EDA)](###Análisis-Exploratorio-de-Datos-(EDA))
+5. [API](###Desarrollo-de-las-API)
+6. [Desployment](###Deployment)
+7. [Video Explicativo](#Video)
+8. [Contacto](#Datos-de-Contacto)
+        
+
+7. [Stack Tecnológico](#stack-tecnologico)
+   - [BigQuery](#bigquery)
+   - [Looker Studio](#looker-studio)
+   - [ClickUp](#clickup)
+   - [Integración de Tecnologías](#integracion-de-tecnologias)
+
+</details>
+
 ### Introducción
 Este es un proyecto enfocado en la creación de una API para la gestión y análisis de datos de juegos proporcionados por Steam. El objetivo es generar funcionalidades específicas para realizar consultas, análisis y recomendaciones a partir de los datasets brindados.
 
-## Diccionario de los Datos
+## Diccionario de Datos
 
 <img src="./Imagenes/Diccionario.jpg"></p>
 
-### Transformaciones de Datos
+### Transformaciones de Datos (ETL)
 Se realizó la lectura de los dataset con el formato correcto, incluyendo su limpieza, organización y preparación para optimizar las  consultas que se realicen, el rendimiento de la API, el entrenamiento del modelo de aprendizaje automático.
-
-### Feature Engineering
 Se creó la columna 'sentiment_analysis' aplicando análisis de sentimiento a las reseñas de juegos en el dataset 'user_reviews'. Esta columna representa la polaridad del sentimiento en una escala de 0 a 2 (0 malo, 1 neutral o falta de reseña, 2 positivo).
 
 ### Análisis Exploratorio de Datos (EDA)
