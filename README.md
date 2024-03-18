@@ -86,14 +86,12 @@ Utilicé las siguientes Tecnologías:
 
 ### **Editor de código:**
 
-- *Visual Studio Code:*
-[![Visual Studio Code](https://img.shields.io/badge/Visual-Studio-Code-7B68E?style=for-the-badge&logo=lock&logoColor=white)](https://code.visualstudio.com/)
+- [![Visual Studio Code](https://img.shields.io/badge/VisualStudioCode-7B68E?style=for-the-badge&logo=lock&logoColor=white)](https://code.visualstudio.com/)
   Para escribir, depurar y administrar tu código.
 
 ### **Lenguaje de Programación:**
 
-- *Python:*
-[![Python](https://img.shields.io/badge/Python-007ACC?style=for-the-badge&logo=lock&logoColor=white)](https://www.python.org/)
+- [![Python](https://img.shields.io/badge/Python-007ACC?style=for-the-badge&logo=lock&logoColor=white)](https://www.python.org/)
   Para el desarrollo de la lógica y la funcionalidad de tu aplicación.
 
 ### **Bibliotecas de Análisis de Datos:**
