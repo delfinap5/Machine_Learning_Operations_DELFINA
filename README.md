@@ -81,7 +81,7 @@ Según la empresa desarrolladora, devuelve un diccionario con la cantidad total 
 
 ### **Deployment**
 
-Con el fin de garantizar una creación y despliegue efectivos de las APIs, organicé el trabajo en dos archivos. En el archivo 'funciones.py', se encuentran funciones adicionales necesarias para complementar cada API. Estas están diseñadas para obtener y preparar los datos específicamente para cada endpoint definido en 'main.py'.
+Con el fin de garantizar una creación y despliegue efectivos de las APIs, organicé el trabajo en dos archivos. En el archivo [funciones.py](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/main/funciones.py), se encuentran funciones adicionales necesarias para complementar cada API. Estas están diseñadas para obtener y preparar los datos específicamente para cada endpoint definido en [main.py](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/main/main.py).
 Por otro lado, en el archivo 'main.py', se encuentran las funciones finales de los endpoints, listas para ser utilizadas en FastAPI y desplegadas en Render.
 
 Puedes acceder a la API desplegada a través de este enlace: [API Steam](https://apisteamdelfina.onrender.com/docs)
