@@ -1,6 +1,10 @@
-# **Proyecto Individual N°1 (MLOps)**
----
+<p align=center><img src=.imagenes\data_im.jpg width="400px"></p>
 
+# <h1 align=center> **PROYECTO INDIVIDUAL Nº1** </h1>
+
+# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
+
+---
 
 <details>
 <summary><strong>Índice</strong></summary>
@@ -9,8 +13,8 @@
 2. [Objetivo](#Objetivo)
 3. [Diccionario](#Diccionario-de-Datos)
 4. [Transformaciones (ETL)](#Transformaciones-de-Datos-(ETL))
-5. [Analisis (EDA)](#Análisis-Exploratorio-de-Datos-(EDA))
-6. [API](#Desarrollo-de-las-API)
+5. [Analisis Exploratorio (EDA)](#Análisis-Exploratorio-de-Datos-(EDA))
+6. [API](#API)
    - [Desployment](#Deployment)
 7. [Machine Learning](#Machine-Learning)
 8. [Stack Tecnológico](#Stack-Tecnologico)
@@ -19,13 +23,11 @@
 
 </details>
 
-
 ## **Introducción**
 
 ---
 
 Este proyecto se enfoca en la creación de una API para gestionar y analizar datos de juegos proporcionados por Steam. Steam es una plataforma de distribución digital de videojuegos ampliamente utilizada por jugadores de todo el mundo. Los datos recopilados de esta plataforma contienen información valiosa sobre los juegos, sus usuarios y sus interacciones.
-
 
 ## **Objetivo**
 
@@ -33,13 +35,11 @@ Este proyecto se enfoca en la creación de una API para gestionar y analizar dat
 
 El objetivo principal de este proyecto es desarrollar una API que permita realizar consultas, análisis y recomendaciones específicas utilizando los conjuntos de datos de Steam. Esto incluye la capacidad de buscar información detallada sobre juegos, usuarios, transacciones, así como realizar análisis de tendencias y patrones de comportamiento. Además, se pretende implementar funcionalidades de recomendación de juegos basadas en el análisis de datos. Mi rol en este proyecto abarcó el diseño y desarrollo de la infraestructura de datos, la implementación de algoritmos de aprendizaje automático y la gestión del proceso de entrega y despliegue del proyecto.
 
-
 ## **Diccionario de Datos**
 
 ---
 
-<img src="./Imagenes/Diccionario.jpg"></p>
-
+<img src=imagenes/Diccionario.jpg width="450px"></p>
 
 ## **Transformaciones de Datos (ETL)**
 
@@ -47,7 +47,8 @@ El objetivo principal de este proyecto es desarrollar una API que permita realiz
 
 Se realizó la lectura de los dataset con el formato correcto, incluyendo su limpieza, organización y preparación para optimizar las  consultas que se realicen, el rendimiento de la API, el entrenamiento del modelo de aprendizaje automático.
 
-### User Reviews:
+### User Reviews
+
 - Se lee el archivo user_reviews.json y se carga en un DataFrame.
 - Se expanden los diccionarios en las listas de la columna 'reviews' en nuevas columnas.
 - Se realiza la limpieza de los datos, eliminando emojis, símbolos no ASCII y filas duplicadas.
@@ -55,92 +56,108 @@ Se realizó la lectura de los dataset con el formato correcto, incluyendo su lim
 - Se realiza la limpieza adicional en la columna 'posted', convirtiendo los nombres de los meses a números y cambiando el formato de fecha.
 - Se guarda el DataFrame resultante en un archivo CSV.
 
-### Steam Games:
+### Steam Games
+
 - Se lee el archivo steam_games.json y se carga en un DataFrame.
 - Se realizan transformaciones para limpiar los datos, convirtiendo las columnas que son listas a cadenas de texto y convirtiendo la columna 'release_date' al formato de fecha.
 - Se eliminan filas donde todos los valores son nulos, se reemplazan los valores NaN con None y se eliminan filas duplicadas.
 - Se guarda el DataFrame resultante en un archivo CSV.
 
-### Users Items:
+### Users Items
+
 - Se lee el archivo users_items.json y se carga en un DataFrame.
 - Se expanden los diccionarios en las listas de la columna 'items' en nuevas columnas.
 - Se realiza la limpieza de los datos, eliminando filas duplicadas y valores nulos.
 - Se guarda el DataFrame resultante en un archivo CSV.
 
+En este archivo se puede ver cómo se realizó y desarrolló el código: [ETL](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/ETL%20y%20EDA/ETL.ipynb)
 
 ## **Análisis Exploratorio de Datos (EDA)**
 
 ---
 
 ### Steam Games
-- Información General:
-El conjunto de datos contiene información sobre juegos de Steam, con un total de 32,135 entradas y 13 características.
-Algunas características tienen valores nulos, como el editor, el género, la fecha de lanzamiento y el precio.
-
-- Estadísticas Descriptivas:
-El ID de juego varía desde 10 hasta 2,028,850.
-El precio de los juegos varía, con un mínimo de 0 y un máximo de 74.76.
-
-- Valores Únicos y Frecuencias:
-Se observa una amplia variedad de editores, géneros y títulos de juegos.
-Algunos juegos tienen múltiples etiquetas y especificaciones asociadas.
-
-### User Reviews:
 
 - Información General:
-El conjunto de datos contiene revisiones de usuarios de Steam, con 25,791 entradas y 10 características.
-Algunas características tienen valores nulos, como la columna 'funny' (gracioso) y 'posted' (publicado).
+
+  El conjunto de datos contiene información sobre juegos de Steam, con un total de 32,135 entradas y 13 características.
+  Algunas características tienen valores nulos, como el editor, el género, la fecha de lanzamiento y el precio.
 
 - Estadísticas Descriptivas:
-El análisis de sentimientos muestra que la mayoría de las revisiones tienen un sentimiento positivo.
+
+  El ID de juego varía desde 10 hasta 2,028,850.
+  El precio de los juegos varía, con un mínimo de 0 y un máximo de 74.76.
 
 - Valores Únicos y Frecuencias:
-Se observan múltiples revisiones de diferentes usuarios para un mismo juego.
-Las revisiones varían en su tono y longitud, desde revisiones cortas hasta revisiones más detalladas.
 
-### Users Items:
+  Se observa una amplia variedad de editores, géneros y títulos de juegos.
+  Algunos juegos tienen múltiples etiquetas y especificaciones asociadas.
+
+### User Reviews
 
 - Información General:
-El conjunto de datos contiene información sobre los ítems que los usuarios tienen en Steam, con 88,176 entradas y 8 características.
-No se observan valores nulos en este conjunto de datos.
+
+  El conjunto de datos contiene revisiones de usuarios de Steam, con 25,791 entradas y 10 características.
+  Algunas características tienen valores nulos, como la columna 'funny' (gracioso) y 'posted' (publicado).
 
 - Estadísticas Descriptivas:
-Los usuarios tienen una cantidad variable de ítems en sus cuentas, con un promedio de aproximadamente 58 ítems por usuario.
+
+  El análisis de sentimientos muestra que la mayoría de las revisiones tienen un sentimiento positivo.
 
 - Valores Únicos y Frecuencias:
-Hay una amplia variedad de ítems en el conjunto de datos, desde juegos populares como Counter-Strike: Global Offensive hasta juegos menos conocidos.
 
+  Se observan múltiples revisiones de diferentes usuarios para un mismo juego.
+  Las revisiones varían en su tono y longitud, desde revisiones cortas hasta revisiones más detalladas.
 
-## **APIS**
+### Users Items
+
+- Información General:
+
+  El conjunto de datos contiene información sobre los ítems que los usuarios tienen en Steam, con 88,176 entradas y 8 características.
+  No se observan valores nulos en este conjunto de datos.
+
+- Estadísticas Descriptivas:
+
+  Los usuarios tienen una cantidad variable de ítems en sus cuentas, con un promedio de aproximadamente 58 ítems por usuario.
+
+- Valores Únicos y Frecuencias:
+
+  Hay una amplia variedad de ítems en el conjunto de datos, desde juegos populares como Counter-Strike: Global Offensive hasta juegos menos conocidos.
+
+En este archivo se puede ver cómo se realizó y desarrolló el código: [EDA](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/ETL%20y%20EDA/EDA.ipynb)
+
+## **API**
 
 ---
 
-Se disponibilizó los datos utilizando FastAPI. Los endpoints propuestos para consumir la API son:
+<img src=imagenes\API.jpeg width="450px"></p>
+
+Se disponibilizó los datos utilizando FastAPI. Los *endpoints* propuestos para consumir la API son:
 
 - *play_time_genre(genero: str):*
-Devuelve el año con más horas jugadas para un género específico.
+  Devuelve el año con más horas jugadas para un género específico.
 
-Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
+  Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
 
 - *user_for_genre(genero: str):*
-Proporciona el usuario con más horas jugadas para un género y una lista de la acumulación de horas jugadas por año.
+  Proporciona el usuario con más horas jugadas para un género y una lista de la acumulación de horas jugadas por año.
 
-Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
+  Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
 
 - *users_recommend(año: int):*
-Retorna el top 3 de juegos más recomendados por usuarios para el año especificado.
+  Retorna el top 3 de juegos más recomendados por usuarios para el año especificado.
 
-Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+  Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
 
 - *users_worst_developer(año: int):*
-Obtiene el top 3 de desarrolladoras con juegos menos recomendados por usuarios para el año dado.
+  Obtiene el top 3 de desarrolladoras con juegos menos recomendados por usuarios para el año dado.
 
-Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
+  Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
 
 - *sentiment_analysis(empresa_desarrolladora: str):*
-Según la empresa desarrolladora, devuelve un diccionario con la cantidad total de registros de reseñas categorizados por análisis de sentimiento.
+  Según la empresa desarrolladora, devuelve un diccionario con la cantidad total de registros de reseñas categorizados por análisis de sentimiento.
 
-Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
+  Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
 
 ### **Deployment**
 
@@ -159,7 +176,7 @@ Se implementó un enfoque de recomendación de ítem a ítem, lo que implica sug
 
 - *def recomendacion_juego( id de producto)*: Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
 
-En este archivo se puede ver como se crea y desarrolla: [ML](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/Modelo%20de%20aprendizaje%20autom%C3%A1tico/recommend%20games.ipynb)
+En este archivo se puede ver como se crea y desarrolla: [ML](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/ML/recommend%20games.ipynb)
 
 
 ## **Stack Tecnológico**
