@@ -17,9 +17,9 @@
 6. [API](#API)
    - [Desployment](#Deployment)
 7. [Machine Learning](#Machine-Learning)
-8. [Stack Tecnológico](#Stack-Tecnologico)
+8. [Stack Tecnológico](#Stack-Tecnológico)
 9. [Video Explicativo](#Video)
-10. [Contacto](#Datos-de-Contacto)
+10. [Contacto](#Contacto)
 
 </details>
 
