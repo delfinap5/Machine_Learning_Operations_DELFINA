@@ -140,6 +140,7 @@ Por otro lado, en el archivo [main.py](https://github.com/delfinap5/PI-MLOps_STE
 
 Puedes acceder a la API desplegada a través de este enlace: [API Steam](https://apisteamdelfina.onrender.com/docs)
 
+En el archivo [requirements.txt](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/requirements.txt) están las versiones de librerías utilizadas y necesarias para el desploy de la api
 
 ## **Machine Learning**
 
