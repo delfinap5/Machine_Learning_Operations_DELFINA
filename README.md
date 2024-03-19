@@ -47,7 +47,25 @@ El objetivo principal de este proyecto es desarrollar una API que permita realiz
 
 Se realizó la lectura de los dataset con el formato correcto, incluyendo su limpieza, organización y preparación para optimizar las  consultas que se realicen, el rendimiento de la API, el entrenamiento del modelo de aprendizaje automático.
 
-Se creó la columna 'sentiment_analysis' aplicando análisis de sentimiento a las reseñas de juegos en el dataset 'user_reviews'. Esta columna representa la polaridad del sentimiento en una escala de 0 a 2 (0 malo, 1 neutral o falta de reseña, 2 positivo).
+### User Reviews:
+- Se lee el archivo user_reviews.json y se carga en un DataFrame.
+- Se expanden los diccionarios en las listas de la columna 'reviews' en nuevas columnas.
+- Se realiza la limpieza de los datos, eliminando emojis, símbolos no ASCII y filas duplicadas.
+- Se realiza el análisis de sentimiento utilizando VADER de NLTK.
+- Se realiza la limpieza adicional en la columna 'posted', convirtiendo los nombres de los meses a números y cambiando el formato de fecha.
+- Se guarda el DataFrame resultante en un archivo CSV.
+
+### Steam Games:
+- Se lee el archivo steam_games.json y se carga en un DataFrame.
+- Se realizan transformaciones para limpiar los datos, convirtiendo las columnas que son listas a cadenas de texto y convirtiendo la columna 'release_date' al formato de fecha.
+- Se eliminan filas donde todos los valores son nulos, se reemplazan los valores NaN con None y se eliminan filas duplicadas.
+- Se guarda el DataFrame resultante en un archivo CSV.
+
+### Users Items:
+- Se lee el archivo users_items.json y se carga en un DataFrame.
+- Se expanden los diccionarios en las listas de la columna 'items' en nuevas columnas.
+- Se realiza la limpieza de los datos, eliminando filas duplicadas y valores nulos.
+- Se guarda el DataFrame resultante en un archivo CSV.
 
 
 ## **Análisis Exploratorio de Datos (EDA)**
