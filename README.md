@@ -54,7 +54,43 @@ Se creó la columna 'sentiment_analysis' aplicando análisis de sentimiento a la
 
 ---
 
-Se realizó un análisis exploratorio de los datos, ayuda a comprender la naturaleza y distribución de los datos.
+### Steam Games
+- Información General:
+El conjunto de datos contiene información sobre juegos de Steam, con un total de 32,135 entradas y 13 características.
+Algunas características tienen valores nulos, como el editor, el género, la fecha de lanzamiento y el precio.
+
+- Estadísticas Descriptivas:
+El ID de juego varía desde 10 hasta 2,028,850.
+El precio de los juegos varía, con un mínimo de 0 y un máximo de 74.76.
+
+- Valores Únicos y Frecuencias:
+Se observa una amplia variedad de editores, géneros y títulos de juegos.
+Algunos juegos tienen múltiples etiquetas y especificaciones asociadas.
+
+### User Reviews:
+
+- Información General:
+El conjunto de datos contiene revisiones de usuarios de Steam, con 25,791 entradas y 10 características.
+Algunas características tienen valores nulos, como la columna 'funny' (gracioso) y 'posted' (publicado).
+
+- Estadísticas Descriptivas:
+El análisis de sentimientos muestra que la mayoría de las revisiones tienen un sentimiento positivo.
+
+- Valores Únicos y Frecuencias:
+Se observan múltiples revisiones de diferentes usuarios para un mismo juego.
+Las revisiones varían en su tono y longitud, desde revisiones cortas hasta revisiones más detalladas.
+
+### Users Items:
+
+- Información General:
+El conjunto de datos contiene información sobre los ítems que los usuarios tienen en Steam, con 88,176 entradas y 8 características.
+No se observan valores nulos en este conjunto de datos.
+
+- Estadísticas Descriptivas:
+Los usuarios tienen una cantidad variable de ítems en sus cuentas, con un promedio de aproximadamente 58 ítems por usuario.
+
+- Valores Únicos y Frecuencias:
+Hay una amplia variedad de ítems en el conjunto de datos, desde juegos populares como Counter-Strike: Global Offensive hasta juegos menos conocidos.
 
 
 ## **APIS**
