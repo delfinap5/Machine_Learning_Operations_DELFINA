@@ -193,5 +193,6 @@ Este video es explicativo y desarrolla el contenido del proyecto
 ---
 
 - Gmail: delfinapena55@gmail.com
-- LinkedIn: [Delfina Longo Peña](www.linkedin.com/in/delfina-longo-peña-44b4b623b)
+- LinkedIn: [LinkedIn](www.linkedin.com/in/delfina-longo-peña-44b4b623b)
 - Github: [delfinap5](https://github.com/delfinap5)
+- Curriculum: [CV](https://drive.google.com/drive/folders/1W83x9TqqUa2tFrnDEkXd3ZCLhew8pJ-R?usp=drive_link)
