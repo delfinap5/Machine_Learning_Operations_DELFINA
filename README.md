@@ -12,8 +12,8 @@
 1. [Introducción](#Introducción)
 2. [Objetivo](#Objetivo)
 3. [Diccionario](#Diccionario-de-Datos)
-4. [Extraccion, Transformación y Carga (ETL)](#Extraccion,-Transformación-y-Carga)
-5. [Analisis Exploratorio de Datos (EDA)](#Análisis-Exploratorio-de-Datos)
+4. [Extracción, Transformación y Carga](#Extracción,-Transformación-y-Carga)
+5. [Análisis Exploratorio de Datos](#Análisis-Exploratorio-de-Datos)
 6. [API](#API)
    - [Desployment](#Deployment)
 7. [Machine Learning](#Machine-Learning)
@@ -41,7 +41,7 @@ El objetivo principal de este proyecto es desarrollar una API que permita realiz
 
 <img src=./Imagenes/Diccionario.jpg width="450px"></p>
 
-## **Extraccion, Transformación y Carga**
+## **Extracción, Transformación y Carga**
 
 ---
 
@@ -72,7 +72,7 @@ Se realizó la lectura de los dataset con el formato correcto, incluyendo su lim
 
 En este archivo se puede ver cómo se realizó y desarrolló el código: [ETL](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/ETL%20y%20EDA/ETL.ipynb)
 
-## **Análisis Exploratorio de Datos (EDA)**
+## **Análisis Exploratorio de Datos**
 
 ---
 
