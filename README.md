@@ -91,13 +91,17 @@ Puedes acceder a la API desplegada a través de este enlace: [API Steam](https:/
 
 ---
 
-Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
+Se implementó un enfoque de recomendación de ítem a ítem, lo que implica sugerir elementos similares a un ítem dado. Este método se basa en medir la similitud entre los distintos ítems para realizar recomendaciones. En este caso, se recomiendan juegos similares a uno específico evaluando su grado de similitud con otros juegos. Al ingresar un juego en particular, el sistema devuelve una lista de juegos recomendados que comparten características similares. Para calcular esta similitud, se empleó la medida del coseno, la cual evalúa la similitud entre dos juegos basándose en sus atributos o características.
+
 - *def recomendacion_juego( id de producto)*: Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
+
+En este archivo se puede ver como se crea y desarrolla: [ML](https://github.com/delfinap5/PI-MLOps_STEAM_DELFINA/blob/main/Modelo%20de%20aprendizaje%20autom%C3%A1tico/recommend%20games.ipynb)
 
 
 ## **Stack Tecnológico**
 
 ---
+
 Utilicé las siguientes Tecnologías:
 
 ### **Editor de código:**
