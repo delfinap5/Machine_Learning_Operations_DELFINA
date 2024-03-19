@@ -1,30 +1,36 @@
 # **Proyecto Individual N°1 (MLOps)**
 ---
 
+
 <details>
 <summary><strong>Índice</strong></summary>
 
 1. [Introducción](#Introducción)
-2. [Diccionario](#Diccionario-de-Datos)
-3. [Transformaciones (ETL)](#Transformaciones-de-Datos-(ETL))
-4. [Analisis (EDA)](#Análisis-Exploratorio-de-Datos-(EDA))
-5. [API](#Desarrollo-de-las-API)
+2. [Objetivo](#Objetivo)
+3. [Diccionario](#Diccionario-de-Datos)
+4. [Transformaciones (ETL)](#Transformaciones-de-Datos-(ETL))
+5. [Analisis (EDA)](#Análisis-Exploratorio-de-Datos-(EDA))
+6. [API](#Desarrollo-de-las-API)
    - [Desployment](#Deployment)
-7. [Stack Tecnológico](#Stack-Tecnologico)
-   - [Visual Studio Code](#Visual-Studio-Code)
-   - [Fast Api](#Fast-Api)
-   - [Excel](#Excel)
-   - [Zoom](#Zoom)
-8. [Video Explicativo](#Video)
-9. [Contacto](#Datos-de-Contacto)
+7. [Machine Learning](#Machine-Learning)
+8. [Stack Tecnológico](#Stack-Tecnologico)
+9. [Video Explicativo](#Video)
+10. [Contacto](#Datos-de-Contacto)
 
 </details>
+
 
 ## **Introducción**
 
 ---
 
-Este es un proyecto enfocado en la creación de una API para la gestión y análisis de datos de juegos proporcionados por Steam. El objetivo es generar funcionalidades específicas para realizar consultas, análisis y recomendaciones a partir de los datasets brindados.
+Este proyecto se enfoca en la creación de una API para gestionar y analizar datos de juegos proporcionados por Steam. Steam es una plataforma de distribución digital de videojuegos ampliamente utilizada por jugadores de todo el mundo. Los datos recopilados de esta plataforma contienen información valiosa sobre los juegos, sus usuarios y sus interacciones.
+
+## **Objetivo**
+
+---
+
+El objetivo principal de este proyecto es desarrollar una API que permita realizar consultas, análisis y recomendaciones específicas utilizando los conjuntos de datos de Steam. Esto incluye la capacidad de buscar información detallada sobre juegos, usuarios, transacciones, así como realizar análisis de tendencias y patrones de comportamiento. Además, se pretende implementar funcionalidades de recomendación de juegos basadas en el análisis de datos. Mi rol en este proyecto abarcó el diseño y desarrollo de la infraestructura de datos, la implementación de algoritmos de aprendizaje automático y la gestión del proceso de entrega y despliegue del proyecto.
 
 ## **Diccionario de Datos**
 
@@ -37,20 +43,16 @@ Este es un proyecto enfocado en la creación de una API para la gestión y anál
 ---
 
 Se realizó la lectura de los dataset con el formato correcto, incluyendo su limpieza, organización y preparación para optimizar las  consultas que se realicen, el rendimiento de la API, el entrenamiento del modelo de aprendizaje automático.
+
 Se creó la columna 'sentiment_analysis' aplicando análisis de sentimiento a las reseñas de juegos en el dataset 'user_reviews'. Esta columna representa la polaridad del sentimiento en una escala de 0 a 2 (0 malo, 1 neutral o falta de reseña, 2 positivo).
 
-## **Modelo de Aprendizaje Automático**
-
----
-
-Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
-def recomendacion_juego( id de producto ): Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
 
 ## **Análisis Exploratorio de Datos (EDA)**
 
 ---
 
 Se realizó un análisis exploratorio de los datos, ayuda a comprender la naturaleza y distribución de los datos.
+
 
 ## **APIS**
 
@@ -77,6 +79,13 @@ Según la empresa desarrolladora, devuelve un diccionario con la cantidad total 
 ### **Deployment**
 
 Se realizó un desploy de la api. Aqui el link: [api steam delfina](https://apisteamdelfina.onrender.com/docs)
+
+## **Machine Learning**
+
+---
+
+Se utilizó el enfoque para el sistema de recomendación de ítem-ítem para recibir recomendaciones de juegos similares a un producto.
+- *def recomendacion_juego( id de producto)*: Ingresando el id de producto, deberíamos recibir una lista con 5 juegos recomendados similares al ingresado.
 
 
 ## **Stack Tecnológico**
@@ -177,6 +186,7 @@ Utilicé las siguientes Tecnologías:
 
 Este video es explicativo y desarrolla el contenido del proyecto
 [Link del desarrollo del proyecto](https://drive.google.com/drive/folders/1P68YjR5G0JpGXKHdHUULH8FPbCD85dsF?usp=sharing)
+
 
 ## **Contacto**
 
