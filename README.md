@@ -12,8 +12,8 @@
 1. [Introducción](#Introducción)
 2. [Objetivo](#Objetivo)
 3. [Diccionario](#Diccionario-de-Datos)
-4. [Transformaciones (ETL)](#Transformaciones-de-Datos)
-5. [Analisis Exploratorio (EDA)](#Análisis-Exploratorio-de-Datos)
+4. [Extraccion, Transformación y Carga (ETL)](#Extraccion,-Transformación-y-Carga)
+5. [Analisis Exploratorio de Datos (EDA)](#Análisis-Exploratorio-de-Datos)
 6. [API](#API)
    - [Desployment](#Deployment)
 7. [Machine Learning](#Machine-Learning)
@@ -41,7 +41,7 @@ El objetivo principal de este proyecto es desarrollar una API que permita realiz
 
 <img src=./Imagenes/Diccionario.jpg width="450px"></p>
 
-## **Transformaciones de Datos (ETL)**
+## **Extraccion, Transformación y Carga**
 
 ---
 
