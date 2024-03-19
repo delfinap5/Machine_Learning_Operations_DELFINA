@@ -119,22 +119,27 @@ Se disponibilizó los datos utilizando FastAPI. Los endpoints propuestos para co
 
 - *play_time_genre(genero: str):*
 Devuelve el año con más horas jugadas para un género específico.
+
 Ejemplo de retorno: {"Año de lanzamiento con más horas jugadas para Género X" : 2013}
 
 - *user_for_genre(genero: str):*
 Proporciona el usuario con más horas jugadas para un género y una lista de la acumulación de horas jugadas por año.
+
 Ejemplo de retorno: {"Usuario con más horas jugadas para Género X" : us213ndjss09sdf, "Horas jugadas":[{Año: 2013, Horas: 203}, {Año: 2012, Horas: 100}, {Año: 2011, Horas: 23}]}
 
 - *users_recommend(año: int):*
 Retorna el top 3 de juegos más recomendados por usuarios para el año especificado.
+
 Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
 
 - *users_worst_developer(año: int):*
 Obtiene el top 3 de desarrolladoras con juegos menos recomendados por usuarios para el año dado.
+
 Ejemplo de retorno: [{"Puesto 1" : X}, {"Puesto 2" : Y},{"Puesto 3" : Z}]
 
 - *sentiment_analysis(empresa_desarrolladora: str):*
 Según la empresa desarrolladora, devuelve un diccionario con la cantidad total de registros de reseñas categorizados por análisis de sentimiento.
+
 Ejemplo de retorno: {'Valve' : [Negative = 182, Neutral = 120, Positive = 278]}
 
 ### **Deployment**
