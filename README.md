@@ -130,7 +130,7 @@ En este archivo se puede ver cómo se realizó y desarrolló el código: [EDA](h
 
 ---
 
-<img src=./imagenes/API.jpeg width="450px"></p>
+<img src=./Imagenes/API.jpeg width="450px"></p>
 
 Se disponibilizó los datos utilizando FastAPI. Los *endpoints* propuestos para consumir la API son:
 
