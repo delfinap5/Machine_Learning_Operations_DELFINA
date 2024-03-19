@@ -26,17 +26,20 @@
 
 Este proyecto se enfoca en la creación de una API para gestionar y analizar datos de juegos proporcionados por Steam. Steam es una plataforma de distribución digital de videojuegos ampliamente utilizada por jugadores de todo el mundo. Los datos recopilados de esta plataforma contienen información valiosa sobre los juegos, sus usuarios y sus interacciones.
 
+
 ## **Objetivo**
 
 ---
 
 El objetivo principal de este proyecto es desarrollar una API que permita realizar consultas, análisis y recomendaciones específicas utilizando los conjuntos de datos de Steam. Esto incluye la capacidad de buscar información detallada sobre juegos, usuarios, transacciones, así como realizar análisis de tendencias y patrones de comportamiento. Además, se pretende implementar funcionalidades de recomendación de juegos basadas en el análisis de datos. Mi rol en este proyecto abarcó el diseño y desarrollo de la infraestructura de datos, la implementación de algoritmos de aprendizaje automático y la gestión del proceso de entrega y despliegue del proyecto.
 
+
 ## **Diccionario de Datos**
 
 ---
 
 <img src="./Imagenes/Diccionario.jpg"></p>
+
 
 ## **Transformaciones de Datos (ETL)**
 
@@ -60,25 +63,29 @@ Se realizó un análisis exploratorio de los datos, ayuda a comprender la natura
 
 Se disponibilizó los datos utilizando FastAPI. Los endpoints propuestos para consumir la API son:
 
-#### **play_time_genre(genero: str):**
+- *play_time_genre(genero: str):*
 Devuelve el año con más horas jugadas para un género específico.
 
-#### **user_for_genre(genero: str):**
+- *user_for_genre(genero: str):*
 Proporciona el usuario con más horas jugadas para un género y una lista de la acumulación de horas jugadas por año.
 
-#### **users_recommend(año: int):**
+- *users_recommend(año: int):*
 Retorna el top 3 de juegos más recomendados por usuarios para el año especificado.
 
-#### **users_worst_developer(año: int):** 
+- *users_worst_developer(año: int):*
 Obtiene el top 3 de desarrolladoras con juegos menos recomendados por usuarios para el año dado.
 
-#### **sentiment_analysis(empresa_desarrolladora: str):**
+- *sentiment_analysis(empresa_desarrolladora: str):*
 Según la empresa desarrolladora, devuelve un diccionario con la cantidad total de registros de reseñas categorizados por análisis de sentimiento.
 
 
 ### **Deployment**
 
-Se realizó un desploy de la api. Aqui el link: [api steam delfina](https://apisteamdelfina.onrender.com/docs)
+Con el fin de garantizar una creación y despliegue efectivos de las APIs, organicé el trabajo en dos archivos. En el archivo 'funciones.py', se encuentran funciones adicionales necesarias para complementar cada API. Estas están diseñadas para obtener y preparar los datos específicamente para cada endpoint definido en 'main.py'.
+Por otro lado, en el archivo 'main.py', se encuentran las funciones finales de los endpoints, listas para ser utilizadas en FastAPI y desplegadas en Render.
+
+Puedes acceder a la API desplegada a través de este enlace: [API Steam](https://apisteamdelfina.onrender.com/docs)
+
 
 ## **Machine Learning**
 
