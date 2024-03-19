@@ -1,4 +1,4 @@
-<p align=center><img src=.imagenes\data_im.jpg width="400px"></p>
+<p align=center><img src=./imagenes/data_im.jpg width="400px"></p>
 
 # <h1 align=center> **PROYECTO INDIVIDUAL Nº1** </h1>
 
@@ -39,7 +39,7 @@ El objetivo principal de este proyecto es desarrollar una API que permita realiz
 
 ---
 
-<img src=imagenes/Diccionario.jpg width="450px"></p>
+<img src=./imagenes/Diccionario.jpg width="450px"></p>
 
 ## **Transformaciones de Datos (ETL)**
 
@@ -130,7 +130,7 @@ En este archivo se puede ver cómo se realizó y desarrolló el código: [EDA](h
 
 ---
 
-<img src=imagenes\API.jpeg width="450px"></p>
+<img src=./imagenes/API.jpeg width="450px"></p>
 
 Se disponibilizó los datos utilizando FastAPI. Los *endpoints* propuestos para consumir la API son:
 
